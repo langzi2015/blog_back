@@ -1,6 +1,8 @@
 package com.langzi.blog.controller;
 
 
+import com.langzi.blog.common.lang.Result;
+import com.langzi.blog.entity.User;
 import com.langzi.blog.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,8 +24,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
     @Autowired
     UserService userService;
-    @GetMapping("/index")
+
+    @GetMapping("index")
     public Object test() {
-        return userService.getById(1L);
+        User user=userService.getById(1L);
+        return Result.succ(user);
     }
 }
