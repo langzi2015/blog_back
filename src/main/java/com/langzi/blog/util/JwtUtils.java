@@ -47,7 +47,6 @@ public class JwtUtils {
                     .parseClaimsJws(token)
                     .getBody();
         }catch (Exception e){
-            log.debug("validate is token error ", e);
             return null;
         }
     }

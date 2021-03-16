@@ -2,7 +2,6 @@ package com.langzi.blog.config;
 
 import com.langzi.blog.shiro.AccountRealm;
 import com.langzi.blog.shiro.JwtFilter;
-import org.apache.shiro.mgt.SessionsSecurityManager;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.session.mgt.SessionManager;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
@@ -15,6 +14,7 @@ import org.crazycake.shiro.RedisSessionDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
 
 import javax.servlet.Filter;
 import java.util.HashMap;
@@ -37,7 +37,7 @@ public class ShiroConfig {
     }
 
     @Bean
-    public SessionsSecurityManager securityManager(AccountRealm accountRealm,
+    public DefaultWebSecurityManager securityManager(AccountRealm accountRealm,
                                                    SessionManager sessionManager,
                                                    RedisCacheManager redisCacheManager) {
         DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager(accountRealm);

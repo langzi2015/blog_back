@@ -5,11 +5,8 @@ import com.langzi.blog.common.lang.Result;
 import com.langzi.blog.entity.User;
 import com.langzi.blog.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * <p>
@@ -28,6 +25,12 @@ public class UserController {
     @GetMapping("index")
     public Object test() {
         User user=userService.getById(1L);
+        return Result.succ(user);
+    }
+
+    //测试实体校验
+    @PostMapping("/save")
+    public Result save(@Validated @RequestBody User user) {
         return Result.succ(user);
     }
 }
